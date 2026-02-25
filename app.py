@@ -1,4 +1,3 @@
-st
 import google.generativeai as genai
 import time
 
