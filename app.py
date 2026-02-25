@@ -1,90 +1,81 @@
 import streamlit as st
-import google.generativeai as genai
 
-# --- 1. CONFIG & BRAIN SETUP ---
-# अपनी API Key यहाँ डालें
-API_KEY = "यहाँ_अपनी_Key_डालें" 
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel("gemini-1.5-flash")
-
-# --- 2. PAGE CONFIG ---
-st.set_page_config(page_title="CORE AI", layout="wide")
-
-# --- 3. PREMIUM CSS (Jarvas Look) ---
+# --- 1. DARK INDUSTRIAL THEME CSS ---
 st.markdown("""
-    <style>
-    .stApp { background-color: #020617; color: white; }
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
     
-    /* Jarvas Orb Animation */
-    .orb-container { display: flex; justify-content: center; padding: 20px; }
-    .orb {
-        width: 100px; height: 100px;
-        background: radial-gradient(circle, #00d4ff, #0077b6, transparent);
-        border-radius: 50%;
-        box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
-        animation: pulse 4s infinite ease-in-out;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 70px #00d4ff; }
-        100% { transform: scale(1); opacity: 0.8; }
+    <style>
+    /* Full Dark Mode with Boltshift Gradient */
+    .stApp {
+        background: radial-gradient(circle at top right, #07191e 0%, #000000 100%);
+        color: #acb2b1;
     }
 
-    /* Fixed Bottom Nav Styling */
-    .stButton > button {
-        width: 100%; border-radius: 10px; background: rgba(255,255,255,0.05);
-        color: white; border: 1px solid rgba(255,255,255,0.1);
+    /* Standard Grid Boxes (Inspired by Boltshift) */
+    .feature-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+        transition: 0.4s ease;
+    }
+    .feature-card:hover {
+        border-color: #00f2ff;
+        background: rgba(0, 242, 255, 0.05);
+        box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+    }
+
+    /* Standard Classic Icons (No Emoji) */
+    .material-symbols-rounded {
+        font-size: 32px !important;
+        color: #00f2ff;
+    }
+
+    /* Jarvas Style Orb */
+    .orb-box { display: flex; justify-content: center; margin: 30px 0; }
+    .orb {
+        width: 130px; height: 130px;
+        background: radial-gradient(circle, #00f2ff, #005f73, transparent);
+        border-radius: 50%;
+        box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
+        animation: breathe 6s infinite ease-in-out;
+    }
+    @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.05); opacity: 1; } }
+
+    /* Custom Input Bar (Like the one with Mic in your photo) */
+    .stChatInputContainer {
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 20px !important;
+        background: rgba(10, 10, 10, 0.6) !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 4. SESSION STATE (Memory) ---
-if "active_tab" not in st.session_state: st.session_state.active_tab = "Chat"
-if "messages" not in st.session_state: st.session_state.messages = []
+# --- 2. THE UI LAYOUT ---
 
-# --- 5. THE ORB (Top) ---
-st.markdown('<div class="orb-container"><div class="orb"></div></div>', unsafe_allow_html=True)
+# Top Orb (Jarvas Vibe)
+st.markdown('<div class="orb-box"><div class="orb"></div></div>', unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; letter-spacing: 5px; font-weight: 200;'>CORE AI</h2>", unsafe_allow_html=True)
 
-# --- 6. NAVIGATION (Tere Purane Buttons) ---
-col1, col2, col3, col4 = st.columns(4)
+# The 4 Feature Boxes (Standard Icons)
+st.write("##")
+col1, col2 = st.columns(2)
+
 with col1:
-    if st.button("💬 Chat"): st.session_state.active_tab = "Chat"
+    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">psychology</span><p style="font-size:11px; margin-top:10px; color:#666;">NEURAL LINK</p></div>', unsafe_allow_html=True)
+    if st.button("ACTIVATE OPUS", use_container_width=True): pass
+
+    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">visibility</span><p style="font-size:11px; margin-top:10px; color:#666;">VISUAL CORE</p></div>', unsafe_allow_html=True)
+    if st.button("ACTIVATE VISION", use_container_width=True): pass
+
 with col2:
-    if st.button("🧠 Opus"): st.session_state.active_tab = "Opus"
-with col3:
-    if st.button("👁️ Vision"): st.session_state.active_tab = "Vision"
-with col4:
-    if st.button("🎥 Video"): st.session_state.active_tab = "Video"
+    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">videocam</span><p style="font-size:11px; margin-top:10px; color:#666;">CINEMA GEN</p></div>', unsafe_allow_html=True)
+    if st.button("ACTIVATE VIDEO", use_container_width=True): pass
 
-st.markdown("---")
+    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">mic</span><p style="font-size:11px; margin-top:10px; color:#666;">VOICE LINK</p></div>', unsafe_allow_html=True)
+    if st.button("ACTIVATE NICK", use_container_width=True): pass
 
-# --- 7. LOGIC ---
-if st.session_state.active_tab == "Chat":
-    st.subheader("CORE Chat (Gemini)")
-    
-    # Show history
-    for msg in st.session_state.messages:
-        with st.chat_message(msg["role"]):
-            st.write(msg["content"])
-
-    # Input area
-    if prompt := st.chat_input("Master Rohit, I am listening..."):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"): st.write(prompt)
-
-        with st.chat_message("assistant"):
-            response = model.generate_content(prompt)
-            st.write(response.text)
-            st.session_state.messages.append({"role": "assistant", "content": response.text})
-
-elif st.session_state.active_tab == "Opus":
-    st.subheader("Opus 4.6 Reasoning")
-    st.write("Deep Thinking mode will be activated here.")
-
-elif st.session_state.active_tab == "Vision":
-    st.subheader("Vision AI")
-    st.file_uploader("Upload an image")
-
-elif st.session_state.active_tab == "Video":
-    st.subheader("Wan 2.1 Video")
-    st.write("Video generation is coming soon.")
+# Input Section (The "Standard" way)
+st.write("---")
+st.chat_input("Ask CORE AI anything...")
