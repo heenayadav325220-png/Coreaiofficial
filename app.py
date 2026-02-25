@@ -1,4 +1,4 @@
-import streamlit as st
+st
 import google.generativeai as genai
 import time
 
