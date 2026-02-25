@@ -1,4 +1,4 @@
-import streamlit as st
+
 
 # --- 1. DARK INDUSTRIAL THEME CSS ---
 st.markdown("""
@@ -78,4 +78,3 @@ with col2:
 
 # Input Section (The "Standard" way)
 st.write("---")
-st.chat_input("Ask CORE AI anything...")
