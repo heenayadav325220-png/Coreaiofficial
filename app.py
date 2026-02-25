@@ -16,7 +16,7 @@ st.markdown("""
 
 # --- AI ENGINE ---
 try:
-    API_KEY = st.secrets["GOOGLE_API_KEY"]
+    API_KEY = st.secrets[AIzaSyCt9Aw8B7CA9PSHc_SggkHXQUGUP42OXq0]
     genai.configure(api_key=API_KEY)
     # हम यहाँ प्रो मॉडल यूज़ कर रहे हैं
     model = genai.GenerativeModel("gemini-1.5-flash")
@@ -253,75 +253,4 @@ import google.generativeai as genai
 st.set_page_config(page_title="CORE AI", page_icon="♾️", layout="wide")
 
 # --- CUSTOM CSS (यही इसे नंबर 1 बनाएगा) ---
-st.markdown("""
-    <style>
-    .main {
-        background-color: #0e1117;
-    }
-    .stTextInput>div>div>input {
-        background-color: #262730;
-        color: #00f2ff;
-        border-radius: 20px;
-        border: 1px solid #00f2ff;
-    }
-    .stChatMessage {
-        background-color: #1e1e26;
-        border-radius: 15px;
-        border: 0.5px solid #444;
-        margin-bottom: 10px;
-    }
-    h1 {
-        color: #00f2ff;
-        text-shadow: 0 0 10px #00f2ff;
-        text-align: center;
-        font-family: 'Orbitron', sans-serif;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# --- API CONNECTION ---
-try:
-    API_KEY = st.secrets["GOOGLE_API_KEY"]
-    genai.configure(api_key=API_KEY)
-    # Personality Set करना
-    model = genai.GenerativeModel("gemini-1.5-flash", 
-                                  system_instruction="You are CORE AI, the world's most powerful AI created by Rohit Yadav. Your guardian is Nick. Be cool, smart, and helpful.")
-except:
-    st.error("Connection Error!")
-    st.stop()
-
-if "chat" not in st.session_state:
-    st.session_state.chat = model.start_chat(history=[])
-
-# --- HEADER ---
-st.markdown("<h1>♾️ CORE AI : VERSION 1.0</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #888;'>Powered by Digital Bro | Owned by Rohit Yadav</p>", unsafe_allow_html=True)
-st.divider()
-
-# --- CHAT DISPLAY ---
-for message in st.session_state.chat.history:
-    role = "user" if message.role == "user" else "assistant"
-    with st.chat_message(role):
-        st.markdown(message.parts[0].text)
-
-# --- INPUT ---
-prompt = st.chat_input("Ask CORE AI anything...")
-
-if prompt:
-    with st.chat_message("user"):
-        st.markdown(prompt)
-
-    with st.chat_message("assistant"):
-        response = st.session_state.chat.send_message(prompt)
-        st.markdown(response.text)
-
-# --- SIDEBAR ---
-with st.sidebar:
-    st.image("https://img.icons8.com/neon/96/artificial-intelligence.png")
-    st.title("System Status")
-    st.success("CORE Engine: Online")
-    st.info("Master: Rohit Yadav")
-    st.warning("Guardian: Nick")
-    if st.button("Reset Memory"):
-        st.session_state.chat = model.start_chat(history=[])
-        st.rerun()
+st.markdown(""
