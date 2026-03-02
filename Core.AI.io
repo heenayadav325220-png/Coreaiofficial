@@ -1,82 +1,4 @@
-# --- 1. DARK INDUSTRIAL THEME CSS ---
-st.markdown("""
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
-    
-    <style>
-    /* Full Dark Mode with Boltshift Gradient */
-    .stApp {
-        background: radial-gradient(circle at top right, #07191e 0%, #000000 100%);
-        color: #acb2b1;
-    }
-
-    /* Standard Grid Boxes (Inspired by Boltshift) */
-    .feature-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 20px;
-        text-align: center;
-        transition: 0.4s ease;
-    }
-    .feature-card:hover {
-        border-color: #00f2ff;
-        background: rgba(0, 242, 255, 0.05);
-        box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
-    }
-
-    /* Standard Classic Icons (No Emoji) */
-    .material-symbols-rounded {
-        font-size: 32px !important;
-        color: #00f2ff;
-    }
-
-    /* Jarvas Style Orb */
-    .orb-box { display: flex; justify-content: center; margin: 30px 0; }
-    .orb {
-        width: 130px; height: 130px;
-        background: radial-gradient(circle, #00f2ff, #005f73, transparent);
-        border-radius: 50%;
-        box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
-        animation: breathe 6s infinite ease-in-out;
-    }
-    @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.05); opacity: 1; } }
-
-    /* Custom Input Bar (Like the one with Mic in your photo) */
-    .stChatInputContainer {
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 20px !important;
-        background: rgba(10, 10, 10, 0.6) !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# --- 2. THE UI LAYOUT ---
-
-# Top Orb (Jarvas Vibe)
-st.markdown('<div class="orb-box"><div class="orb"></div></div>', unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center; letter-spacing: 5px; font-weight: 200;'>CORE AI</h2>", unsafe_allow_html=True)
-
-# The 4 Feature Boxes (Standard Icons)
-st.write("##")
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">psychology</span><p style="font-size:11px; margin-top:10px; color:#666;">NEURAL LINK</p></div>', unsafe_allow_html=True)
-    if st.button("ACTIVATE OPUS", use_container_width=True): pass
-
-    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">visibility</span><p style="font-size:11px; margin-top:10px; color:#666;">VISUAL CORE</p></div>', unsafe_allow_html=True)
-    if st.button("ACTIVATE VISION", use_container_width=True): pass
-
-with col2:
-    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">videocam</span><p style="font-size:11px; margin-top:10px; color:#666;">CINEMA GEN</p></div>', unsafe_allow_html=True)
-    if st.button("ACTIVATE VIDEO", use_container_width=True): pass
-
-    st.markdown('<div class="feature-card"><span class="material-symbols-rounded">mic</span><p style="font-size:11px; margin-top:10px; color:#666;">VOICE LINK</p></div>', unsafe_allow_html=True)
-    if st.button("ACTIVATE NICK", use_container_width=True): pass
-
-# Input Section (The "Standard" way)
-st.write("---")
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -90,6 +12,7 @@ DOCTYPE html>
         :root {
             --bg: #050505;
             --accent: #3b82f6;
+            --cyan-accent: #00f2ff;
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
         }
@@ -123,6 +46,16 @@ DOCTYPE html>
             border-color: rgba(59, 130, 246, 0.5) !important;
         }
 
+        .orb-box { display: flex; justify-content: center; margin: 20px 0; }
+        .orb {
+            width: 100px; height: 100px;
+            background: radial-gradient(circle, var(--cyan-accent), #005f73, transparent);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
+            animation: breathe 4s infinite ease-in-out;
+        }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.05); opacity: 1; } }
+
         .dashboard-overlay {
             position: fixed;
             inset: 0;
@@ -137,7 +70,6 @@ DOCTYPE html>
         @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 0; } }
         .pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid var(--accent); border-radius: 50%; animation: pulse-ring 2s infinite; }
 
-        /* Custom Scrollbar */
         #chat-area::-webkit-scrollbar { width: 4px; }
         #chat-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
     </style>
@@ -151,21 +83,17 @@ DOCTYPE html>
             </div>
             <h1 class="text-xl font-black tracking-tighter uppercase">CORE <span class="text-blue-500">AI</span></h1>
         </div>
+        
+        <div class="orb-box">
+            <div class="orb"></div>
+        </div>
+
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
             <button onclick="setMode('chat')" class="nav-item active w-full flex items-center gap-3 p-3 rounded-xl bg-blue-600/10 text-blue-400 border border-blue-500/20">
                 <i data-lucide="message-square" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Chat</span>
             </button>
             <button onclick="setMode('image')" class="nav-item w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-zinc-400 hover:text-white transition-all">
-                <i data-lucide="image" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Image Gen</span>
-            </button>
-            <button onclick="setMode('video')" class="nav-item w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-zinc-400 hover:text-white transition-all">
-                <i data-lucide="video" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Video Gen</span>
-            </button>
-            <button onclick="setMode('voice')" class="nav-item w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-zinc-400 hover:text-white transition-all">
-                <i data-lucide="mic-2" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Voice</span>
-            </button>
-            <button onclick="setMode('mood')" class="nav-item w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-zinc-400 hover:text-white transition-all">
-                <i data-lucide="heart" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Mood</span>
+                <i data-lucide="image" class="w-5 h-5"></i> <span class="text-sm font-bold uppercase tracking-widest">Image</span>
             </button>
         </nav>
         <div class="p-6 border-t border-white/10 text-center text-xs text-zinc-500">Rohit Yadav • Neural Link</div>
@@ -175,7 +103,7 @@ DOCTYPE html>
         <button id="menu-toggle" class="lg:hidden p-2 rounded-lg bg-white/5"> <i data-lucide="menu" class="w-6 h-6"></i> </button>
         <div class="flex items-center gap-3">
             <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span id="mode-indicator" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Neural Chat Active</span>
+            <span id="mode-indicator" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">System Operational</span>
         </div>
         <button id="dashboard-toggle" class="p-2 rounded-lg bg-white/5"> <i data-lucide="layout-grid" class="w-5 h-5 text-zinc-400"></i> </button>
     </header>
@@ -184,7 +112,7 @@ DOCTYPE html>
         <div class="flex flex-col items-start max-w-[85%]">
             <div class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2 ml-1">CORE AI • System</div>
             <div class="p-4 rounded-2xl rounded-tl-none glass-panel text-sm leading-relaxed">
-                Namaste. I am Core AI, founded by Rohit Yadav. How can I assist you?
+                Namaste. I am Core AI, founded by Rohit Yadav. Ready for input.
             </div>
         </div>
     </main>
@@ -207,14 +135,14 @@ DOCTYPE html>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-panel p-6 rounded-3xl border-blue-500/20">
-                <div class="flex justify-between items-center mb-4"><span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest">Live Cricket</span><div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div></div>
-                <div class="flex justify-between items-center"><div class="text-center"><div class="text-2xl font-black">IND 245/4</div></div><div class="text-zinc-500 font-mono text-xs">vs</div><div class="text-center"><div class="text-2xl font-black text-zinc-500">AUS</div></div></div>
+                <div class="flex justify-between items-center mb-4"><span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest">Live Status</span><div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div></div>
+                <div class="text-sm text-zinc-300">System running at 98% efficiency.</div>
             </div>
             <div class="glass-panel p-6 rounded-3xl">
-                <span class="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-4 block">Neural Memory</span>
+                <span class="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-4 block">Memory</span>
                 <ul class="space-y-2 text-[11px] text-zinc-400">
-                    <li>✓ Dark mode active</li>
-                    <li>✓ Project: CORE AI</li>
+                    <li>✓ Industrial Dark Theme</li>
+                    <li>✓ Orb System Active</li>
                 </ul>
             </div>
         </div>
@@ -247,7 +175,7 @@ DOCTYPE html>
         document.getElementById('dashboard-toggle').onclick = () => dashboard.classList.add('open');
         document.getElementById('close-dashboard').onclick = () => dashboard.classList.remove('open');
 
-        // Speech Recognition Setup
+        // Speech Recognition
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
@@ -294,13 +222,21 @@ DOCTYPE html>
             }
         }
 
-        function addMessage(role, text) {
+        function addMessage(role, text, isImage = false) {
             const div = document.createElement('div');
-            div.className = `flex flex-col ${role === 'user' ? 'items-end ml-auto' : 'items-start'} max-w-[85%] animate-in fade-in slide-in-from-bottom-2`;
+            div.className = `flex flex-col ${role === 'user' ? 'items-end ml-auto' : 'items-start'} max-w-[85%]`;
+            
+            let content = '';
+            if (isImage) {
+                content = `<img src="${text}" class="rounded-lg max-w-full h-auto" />`;
+            } else {
+                content = text;
+            }
+
             div.innerHTML = `
                 <div class="text-[9px] text-zinc-500 uppercase tracking-widest mb-1 mx-1">${role === 'user' ? 'You' : 'CORE AI'}</div>
                 <div class="p-4 rounded-2xl ${role === 'user' ? 'rounded-tr-none bg-blue-600' : 'rounded-tl-none glass-panel'} text-sm leading-relaxed">
-                    ${text}
+                    ${content}
                 </div>
             `;
             chatArea.appendChild(div);
@@ -311,15 +247,29 @@ DOCTYPE html>
         async function processAI(input) {
             updateUI(true, "Thinking...");
             try {
+                let prompt = input;
+                if (currentMode === 'image') {
+                    prompt = `Generate a detailed image based on this prompt: ${input}`;
+                }
+
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${GEMINI_API_KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: input }] }] })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
+                
                 const data = await response.json();
                 const aiText = data.candidates[0].content.parts[0].text;
-                addMessage('model', aiText);
-                speak(aiText);
+                
+                if (currentMode === 'image') {
+                    // Note: This API requires a different approach for true image generation.
+                    // For now, this will return a text description to be visualized or use a dummy image.
+                    addMessage('model', "Image Generation Mode: " + aiText);
+                    speak("Image generation feature requires API configuration for image generation.");
+                } else {
+                    addMessage('model', aiText);
+                    speak(aiText);
+                }
             } catch (error) {
                 addMessage('model', "Neural Error: " + error.message);
                 stopAll();
@@ -334,101 +284,10 @@ DOCTYPE html>
         }
 
         function setMode(mode) {
-            // Functionality to be added
+            currentMode = mode;
             console.log("Mode set to: " + mode);
+            document.getElementById('mode-indicator').innerText = mode.toUpperCase() + " ACTIVE";
         }
     </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORE AI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #0a192f; color: white; font-family: sans-serif; }
-        .glass { background: rgba(16, 32, 64, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.2); }
-        .neon-border { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
-    </style>
-</head>
-<body class="p-4">
-
-    <div class="glass p-4 rounded-xl flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold text-cyan-400">CORE AI</h1>
-        <div class="text-sm text-gray-400">Your Personal AI Assistant</div>
-    </div>
-
-    <div class="glass p-4 rounded-xl h-[60vh] overflow-y-auto mb-4">
-        <div class="flex justify-end mb-4">
-            <div class="bg-cyan-900 p-3 rounded-lg max-w-[80%]">
-                Hi Core, mujhe space ke baare mein kuch interesting batao.
-            </div>
-        </div>
-        
-        <div class="flex justify-start mb-4">
-            <div class="bg-gray-800 p-3 rounded-lg max-w-[80%] border border-cyan-500">
-                Sure! Kya tum jaante ho ki Venus par ek din uske saal se bada hota hai?!
-                Ek din complete hone mein 243 prithvi din lagte hain lekin Surya ka ek chakkar poora karne mein sirf 225 din! ✈️
-            </div>
-        </div>
-    </div>
-
-    <div class="glass p-3 rounded-xl flex items-center gap-2">
-        <input type="text" placeholder="Type your message..." class="flex-grow bg-transparent p-2 outline-none text-white">
-        <button class="bg-cyan-600 p-3 rounded-full neon-border">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-            </svg>
-        </button>
-    </div>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORE AI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #0a192f; color: white; font-family: sans-serif; }
-        .glass { background: rgba(16, 32, 64, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.2); }
-        .neon-border { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
-    </style>
-</head>
-<body class="p-4">
-
-    <div class="glass p-4 rounded-xl flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold text-cyan-400">CORE AI</h1>
-        <div class="text-sm text-gray-400">Your Personal AI Assistant</div>
-    </div>
-
-    <div class="glass p-4 rounded-xl h-[60vh] overflow-y-auto mb-4">
-        <div class="flex justify-end mb-4">
-            <div class="bg-cyan-900 p-3 rounded-lg max-w-[80%]">
-                Hi Core, mujhe space ke baare mein kuch interesting batao.
-            </div>
-        </div>
-        
-        <div class="flex justify-start mb-4">
-            <div class="bg-gray-800 p-3 rounded-lg max-w-[80%] border border-cyan-500">
-                Sure! Kya tum jaante ho ki Venus par ek din uske saal se bada hota hai?!
-                Ek din complete hone mein 243 prithvi din lagte hain lekin Surya ka ek chakkar poora karne mein sirf 225 din! ✈️
-            </div>
-        </div>
-    </div>
-
-    <div class="glass p-3 rounded-xl flex items-center gap-2">
-        <input type="text" placeholder="Type your message..." class="flex-grow bg-transparent p-2 outline-none text-white">
-        <button class="bg-cyan-600 p-3 rounded-full neon-border">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-            </svg>
-        </button>
-    </div>
-
 </body>
 </html>
