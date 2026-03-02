@@ -340,3 +340,95 @@ DOCTYPE html>
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORE AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a192f; color: white; font-family: sans-serif; }
+        .glass { background: rgba(16, 32, 64, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.2); }
+        .neon-border { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    </style>
+</head>
+<body class="p-4">
+
+    <div class="glass p-4 rounded-xl flex justify-between items-center mb-4">
+        <h1 class="text-2xl font-bold text-cyan-400">CORE AI</h1>
+        <div class="text-sm text-gray-400">Your Personal AI Assistant</div>
+    </div>
+
+    <div class="glass p-4 rounded-xl h-[60vh] overflow-y-auto mb-4">
+        <div class="flex justify-end mb-4">
+            <div class="bg-cyan-900 p-3 rounded-lg max-w-[80%]">
+                Hi Core, mujhe space ke baare mein kuch interesting batao.
+            </div>
+        </div>
+        
+        <div class="flex justify-start mb-4">
+            <div class="bg-gray-800 p-3 rounded-lg max-w-[80%] border border-cyan-500">
+                Sure! Kya tum jaante ho ki Venus par ek din uske saal se bada hota hai?!
+                Ek din complete hone mein 243 prithvi din lagte hain lekin Surya ka ek chakkar poora karne mein sirf 225 din! ✈️
+            </div>
+        </div>
+    </div>
+
+    <div class="glass p-3 rounded-xl flex items-center gap-2">
+        <input type="text" placeholder="Type your message..." class="flex-grow bg-transparent p-2 outline-none text-white">
+        <button class="bg-cyan-600 p-3 rounded-full neon-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+        </button>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORE AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a192f; color: white; font-family: sans-serif; }
+        .glass { background: rgba(16, 32, 64, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.2); }
+        .neon-border { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    </style>
+</head>
+<body class="p-4">
+
+    <div class="glass p-4 rounded-xl flex justify-between items-center mb-4">
+        <h1 class="text-2xl font-bold text-cyan-400">CORE AI</h1>
+        <div class="text-sm text-gray-400">Your Personal AI Assistant</div>
+    </div>
+
+    <div class="glass p-4 rounded-xl h-[60vh] overflow-y-auto mb-4">
+        <div class="flex justify-end mb-4">
+            <div class="bg-cyan-900 p-3 rounded-lg max-w-[80%]">
+                Hi Core, mujhe space ke baare mein kuch interesting batao.
+            </div>
+        </div>
+        
+        <div class="flex justify-start mb-4">
+            <div class="bg-gray-800 p-3 rounded-lg max-w-[80%] border border-cyan-500">
+                Sure! Kya tum jaante ho ki Venus par ek din uske saal se bada hota hai?!
+                Ek din complete hone mein 243 prithvi din lagte hain lekin Surya ka ek chakkar poora karne mein sirf 225 din! ✈️
+            </div>
+        </div>
+    </div>
+
+    <div class="glass p-3 rounded-xl flex items-center gap-2">
+        <input type="text" placeholder="Type your message..." class="flex-grow bg-transparent p-2 outline-none text-white">
+        <button class="bg-cyan-600 p-3 rounded-full neon-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+        </button>
+    </div>
+
+</body>
+</html>
